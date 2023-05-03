@@ -11,6 +11,7 @@ describe('Central de Atendimento ao Cliente TAT', function(){
 
     //Campos obrigatórios: Nome, Sobrenome, Email e Como podemos te ajudar?
     it('preencher campos obrigatórios e enviar o formulário', () => {
+        cy.clock()
         cy.get('#firstName')
             .type('Romulo')
         cy.get('#lastName')
@@ -21,13 +22,18 @@ describe('Central de Atendimento ao Cliente TAT', function(){
             .type('Gostaria de solicitar o cancelamento do meu pedido n° 2847629')
         cy.contains('button','Enviar')
             .click()
-        cy.get('.success')
+        cy.contains('.success','Mensagem enviada com sucesso.')
             .should('be.visible')
+        cy.tick(3000)
+        cy.contains('.success','Mensagem enviada com sucesso.')
+            .should('not.be.visible')
+        
     });
 
     it('reduzir tempo de escrita na caixa de texto', () => {
         const longText = 'Lorem ipsum dolor sit amet. Et odit pariatur et eligendi eveniet nam molestias sint sit molestiae porro vel minus quia. Aut esse cupiditate eos fugiat recusandae est consequatur voluptatem est officia minima aut vitae nulla. Est corrupti earum hic commodi omnis sed ipsa assumenda id exercitationem commodi et illo possimus eum modi neque sed ipsum quia.'
         
+        cy.clock()
         cy.get('#firstName')
             .type('Raquel')
         cy.get('#lastName')
@@ -38,17 +44,24 @@ describe('Central de Atendimento ao Cliente TAT', function(){
             .type(longText, {delay:0})
         cy.contains('button','Enviar')
             .click()
-        cy.get('.success')
+        cy.contains('.success','Mensagem enviada com sucesso.')
             .should('be.visible')
+        cy.tick(3000)
+        cy.contains('.success','Mensagem enviada com sucesso.')
+            .should('not.be.visible')
     });
 
     it('exibir mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
+        cy.clock()
         cy.get('#email')
             .type('rroliveira.test.mail.com')
         cy.contains('button','Enviar')
             .click()
-        cy.get('.error')
+        cy.contains('.error', 'Valide os campos obrigatórios!')
             .should('be.visible')
+        cy.tick(3000)
+        cy.contains('.error','Valide os campos obrigatórios!')
+                .should('not.be.visible')
     });
 
     it('validar que o campo telefone aceita apenas números', () => {
@@ -59,6 +72,7 @@ describe('Central de Atendimento ao Cliente TAT', function(){
 
 
     it('exibir mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+        cy.clock()
         cy.get('#firstName')
             .type('Ruth')
         cy.get('#lastName')
@@ -71,8 +85,11 @@ describe('Central de Atendimento ao Cliente TAT', function(){
             .type('Gostaria de solicitar o reembolso do meu pedido n° 1289371')
         cy.contains('button','Enviar')
             .click()
-        cy.get('.error')
+        cy.contains('.error', 'Valide os campos obrigatórios!')
             .should('be.visible')
+        cy.tick(3000)
+        cy.contains('.error','Valide os campos obrigatórios!')
+                .should('not.be.visible')
     });
 
     it('preencher e limpar os campos nome, sobrenome, email e telefone', () => {
@@ -99,17 +116,26 @@ describe('Central de Atendimento ao Cliente TAT', function(){
     });
 
     it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
+        cy.clock()
         cy.contains('button','Enviar')
             .click()
-        cy.get('.error')
+        cy.contains('.error', 'Valide os campos obrigatórios!')
             .should('be.visible')
+        cy.tick(3000)
+        cy.contains('.error','Valide os campos obrigatórios!')
+                .should('not.be.visible')
     });
 
     it('envia o formuário com sucesso usando um comando customizado', () => {
+        cy.clock()
+
         cy.fillMandatoryFieldsAndSubmit('Claudio', 'Santana', 'claudioSantAna@test.com', 'teste')
             
-        cy.get('.success')
+        cy.contains('.success','Mensagem enviada com sucesso.')
             .should('be.visible')
+        cy.tick(3000)
+        cy.contains('.success','Mensagem enviada com sucesso.')
+            .should('not.be.visible')
     });
 
     it('seleciona um produto (YouTube) por seu texto', () => {
