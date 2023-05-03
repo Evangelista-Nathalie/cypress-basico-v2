@@ -1,29 +1,27 @@
 # Testes automatizados com Cypress - Básico
+Scripts desenvolvidos para o curso de automatização com Cypress
 
-👋 Seja bem-vindo(a)!
+## Pré-requisitos
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai adorar este curso. ❤️
+Os seguintes sistemas estejam instalados em seu computador:
 
-## O que você vai aprender
+**Git** - *versão utilizada 2.34.1*\
+**Node.js** - *versão utilizada 2.34.1*\
+**npm** - *versão utilizada 2.34.1*\
+**Google Chrome** - *versão utilizada 2.34.1*\
+**Visual Studio Code** - *versão utilizada 2.34.1* - ou alguma outra IDE de sua preferência
 
-Durante o curso de testes automatizados com Cypress (básico), você vai aprender:
+> Obs¹.: Caso já possua alguns dos sistemas acima, verificar a versão *ex.: npm --version* e atualizar se necessário\
+> Obs².: O npm é instalado juntamente com o Node.js
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar _upload_ de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como executar os testes em um _pipeline_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
+## Instalação
 
-## Vamos começar?
+Rodar o comando `npm install` na pasta que deseja salvar os testes.
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+## Executando os testes
 
-___
+Rodar o comando `npx cypress open` ou `npx cypress run`
+> Obs¹.: O comando `npx cypress run` realiza a execução no terminal, sem exibir a tela interativa no cypress na web
 
-Este é mais um curso da [**Escola Talking About Testing**](https://udemy.com/user/walmyr).
+### Observação
+Este é um curso da [**Escola Talking About Testing**](https://udemy.com/user/walmyr).
